@@ -1,7 +1,7 @@
 import React from "react";
 import { getInitialData } from "../utils/data";
 import NoteInput from "./NoteInput";
-import NoteAppBody from "./NoteAppBody";
+import NoteListBody from "./NoteListBody";
 import SearchBar from "./SearchBar";
 
 class NoteApp extends React.Component {
@@ -61,7 +61,7 @@ class NoteApp extends React.Component {
                 <SearchBar onSearch={this.onSearchHandler} searchTitle={this.state.searchTitle} />
                 <div className="note-app">         
                     <NoteInput addNote={this.onAddNoteHandler} />
-                    <NoteAppBody notes={this.state.notes} onDelete={this.onDeleteHandler} onArchive={this.onArchiveHandler} onUnArchive={this.onArchiveHandler}/>
+                    <NoteListBody notes={this.state.notes} onDelete={this.onDeleteHandler} onArchive={this.onArchiveHandler} onUnArchive={this.onArchiveHandler}/>
                 </div>
             </>
         )
