@@ -1,11 +1,11 @@
 import React from 'react'
 
-const SearchBar = ( {onSearch, searchTitle} ) => {
+const SearchBar = ( {onSearch} ) => {
         return (
             <div className='note-app__header'>
                 <h1>Note App</h1>
                 <div className='note-search'>
-                    <input type='text' placeholder='Cari catatan ...' value={searchTitle} onChange={onSearch} />
+                    <input type='text' placeholder='Cari catatan ...' onChange={onSearch} />
                 </div>
             </div>
         )

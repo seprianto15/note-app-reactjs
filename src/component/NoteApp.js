@@ -17,13 +17,16 @@ class NoteApp extends React.Component {
         this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
         this.onArchiveHandler = this.onArchiveHandler.bind(this);
         this.onSearchHandler = this.onSearchHandler.bind(this);
+    
     }
 
     onSearchHandler(event) {
-        const search = this.state.notes.filter(note => note.title.search(event.target.value) !== -1);
-        this.setState({search})
-        this.setState({searchTitle: event.target.value})
-        console.log(search)
+        this.setState((prevState) => {
+            return {
+                ...prevState,
+                searchTitle: event.target.value
+            }
+        })
     }
 
     onArchiveHandler(id) {
@@ -61,7 +64,11 @@ class NoteApp extends React.Component {
                 <SearchBar onSearch={this.onSearchHandler} searchTitle={this.state.searchTitle} />
                 <div className="note-app">         
                     <NoteInput addNote={this.onAddNoteHandler} />
-                    <NoteListBody notes={this.state.notes} onDelete={this.onDeleteHandler} onArchive={this.onArchiveHandler} onUnArchive={this.onArchiveHandler}/>
+                    <NoteListBody notes={this.state.notes.filter((note) => note.title.toLowerCase()
+                    .includes(this.state.searchTitle.toLowerCase()))} 
+                    onDelete={this.onDeleteHandler} 
+                    onArchive={this.onArchiveHandler} 
+                    onUnArchive={this.onArchiveHandler}/>
                 </div>
             </>
         )
